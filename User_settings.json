@@ -1,0 +1,159 @@
+// 將您的設定放入此檔案中以覆寫預設值
+// Place your settings in this file to overwrite the default settings
+{
+    // 允許將使用狀況資料和錯誤傳送給 Microsoft。
+    // Disable telemetry reporting
+    "telemetry.enableTelemetry": false,
+    // 允許將損毀報告傳送給 Microsoft。
+    // Disable crash reporting
+    "telemetry.enableCrashReporter": false,
+
+    // 控制項資訊看板的位置。可顯示於 Workbench 的左方或右方。
+    // Controls the location of the sidebar. It can either show on the left or right of the workbench.
+    //"workbench.sideBar.location": "left",
+
+    // 依據使用中的編輯器控制視窗標題。變數會依據內容替換:
+    // ${activeEditorShort}: 檔案名稱 (例如 myFile.txt)
+    // ${activeEditorMedium}: 與工作區資料夾相關的檔案路徑 (例如 myFolder/myFile.txt)
+    // ${activeEditorLong}: 完整的檔案路徑 (例如 /Users/Development/myProject/myFolder/myFile.txt)
+    // ${folderName}: 包含著資料夾之工作區資料夾的名稱 (例如 myFolder)
+    // ${folderPath}: 包含著資料夾之工作區資料夾的檔案路徑 (例如 /Users/Development/myFolder)
+    // ${rootName}: 工作區的名稱 (例如 myFolder 或 myWorkspace)
+    // ${rootPath}: 工作區的檔案路徑 (例如 /Users/Development/myWorkspace)
+    // ${appName}: 例如 VS Code
+    // ${dirty}: 已變更指示 (若使用中編輯器已變更)
+    // ${separator}: 僅在受具有值或靜態文字之變數括住時才顯示的條件式分隔符號 (" - ")
+    // Controls the window title based on the active editor. Variables are substituted based on the context:
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${activeEditorMedium}",
+    //"window.title": "${dirty}${rootName}${separator}${activeEditorShort}",
+
+    // 控制活動列在 workbench 中的可見度。
+    // Controls the visibility of the activity bar in the workbench.
+    "workbench.activityBar.visible": true,
+
+    // 控制 Workbench 底端狀態列的可視性。
+    // Controls the visibility of the status bar at the bottom of the workbench.
+    "workbench.statusBar.visible": true,
+
+
+    "workbench.iconTheme": "vscode-icons",
+
+    // Command Prompt
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    // PowerShell
+    //"terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+    // Git Bash
+    //"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
+    // Bash on Ubuntu (on Windows)
+    //"terminal.integrated.shell.windows": "C:\\Windows\\System32\\bash.exe"
+
+    // 控制總管是否在開啟檔案時自動加以顯示及選取。
+    // Controls if the explorer should automatically reveal and select files when opening them.
+    //"explorer.autoReveal": false,
+
+    // 控制編輯器轉譯空白字元的方式，可能為 'none'、'boundary' 及 'all'。 'boundary' 選項不會轉譯字組間的單一空格。
+    // Controls how the editor should render whitespace characters, possibilities are 'none', 'boundary', and 'all'. The 'boundary' option does not render single spaces between words.
+    "editor.renderWhitespace": "all",
+
+    // 控制編輯器是否應顯示控制字元
+    // Controls whether the editor should render control characters
+    "editor.renderControlCharacters": true,
+
+    // 控制編輯器是否捲動到最後一行之外。
+    // Controls if the editor will scroll beyond the last line
+    "editor.scrollBeyondLastLine": false,
+
+    // 控制編輯器如何顯示目前行的醒目提示。
+    //  - none
+    //  - gutter
+    //  - line
+    //  - all: 醒目提示裝訂邊和目前的行。
+    "editor.renderLineHighlight": "all",
+
+    // 控制是否會顯示迷你地圖
+    // Controls if the minimap is shown
+    "editor.minimap.enabled": true,
+
+    // 調整視窗的縮放比例。原始大小為 0，而且每個向上增量 (例如 1) 或向下增量 (例如 -1) 代表放大或縮小 20%。您也可以輸入小數，更細微地調整縮放比例。
+    // Adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity.
+    "window.zoomLevel": 0,
+
+    // Automatically update extensions
+    "extensions.autoUpdate": true,
+
+    // 設定 Glob 模式，以排除檔案及資料夾。例如，檔案總管會根據此項設定，判斷何種檔案和資料夾該顯示或隱藏。
+    // Configure glob patterns for excluding files and folders.
+    "files.exclude": {
+        "**/.svn": true,
+        "**/*.{gitignore,user,p4ignore,sln}": true,
+        "**/*.{signed,cap,html}": true,
+        "**/*.{bin,rom,ifwi,dll,lib,efi,exe,doc,docx,xls,EXE,idb,pdb,rtf}": true,
+        "**/DEBUG_*": true,
+        "**/NOOPT_*": true,
+        "**/RELEASE_*": true,
+        //"**/Build": true, // exclude Build folder
+        //"**/NULL": true,
+        //"Build/CFL*": true, // exclude Build folder
+        //"**/temp": true, // exclude Build folder
+    },
+    //  "**/.git": true,
+    //  "**/.svn": true,
+    //  "**/.hg": true,
+    //  "**/.DS_Store": true,
+    //  //"**/.vscode": true,
+
+    // 設定檔案路徑的 Glob 模式已將其自檔案監看排除。模式必須符合絕對路徑 (例如使用 ** 或完整路徑前置詞以正確相符)。必須先重新開機才能變更這項設定。若是發生 Code 在啟動時取用大量 CPU 時間的情況，可以排除較大的資料夾以降低起始負載。
+    // Configure glob patterns of file paths to exclude from file watching. Changing this setting requires a restart. When you experience Code consuming lots of cpu time on startup, you can exclude large folders to reduce the initial load.
+    "files.watcherExclude": {
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/*.{bin,rom,ifwi,dll,lib,efi,exe,doc,docx,xls,EXE,idb,pdb,rtf}": true,
+        "**/*.{gitignore,user,p4ignore,sln}": true,
+        "**/DEBUG_*": true,
+        "**/NOOPT_*": true,
+        "**/RELEASE_*": true,
+        //"**/Build": true, // exclude Build folder
+        // "Build": true, // exclude Build folder
+    },
+    //  "**/.git/objects/**": true,
+    //  "**/.git/subtree-cache/**": true,
+    //  "**/node_modules/*/**": true,
+    //  ".vscode": true,
+
+  // 設定 Glob 模式，以在搜尋中排除檔案和資料夾。這會從 `files.exclude` 設定繼承所有 Glob 模式。請前往[這裡](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options)閱讀更多關於 Glob 模式的內容。
+    "search.exclude": {
+        "**/*.svn": true,
+        "**/DEBUG_*": true,
+        "**/NOOPT_*": true,
+        "**/RELEASE_*": true,
+    },
+
+    //  "**/node_modules": true,
+    //  "**/bower_components": true
+
+
+    // 將檔案關聯設定為語言 (例如 "*.extension": "html")。這些語言優先於已安裝語言的預設關聯。
+    // Configure file associations to languages (e.g. "*.extension": "html"). These have precedence over the default associations of the languages installed.
+    "files.associations": {
+        "*.env": "makefile",
+        "*.mak": "makefile",
+        "*.dec": "makefile",
+        "*.dsc": "makefile",
+        "*.fdf": "makefile",
+        "*.txt": "makefile",
+        "*.template": "makefile",
+        "*.inf": "ini",
+        "*.def": "cpp",
+        "*.sti": "cpp",
+        "*.uni": "cpp",
+        "*.vfr": "cpp",
+        "*.hfr": "cpp"
+    },
+
+    "files.autoSave": "off",
+    "terminal.integrated.rendererType": "dom",
+    "[makefile]": {},
+    "breadcrumbs.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+}

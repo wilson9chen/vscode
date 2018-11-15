@@ -1,0 +1,134 @@
+{
+    // See https://code.visualstudio.com/Docs/editor/tasks
+    // See also https://code.visualstudio.com/docs/editor/tasks-appendix
+    // for the documentation about the tasks.json format
+    //
+    // ${workspaceFolder} - the path of the folder opened in VS Code
+    // ${workspaceFolderBasename} - the name of the folder opened in VS Code without any slashes (/)
+    // ${file} - the current opened file
+    // ${relativeFile} - the current opened file relative to workspaceFolder
+    // ${fileBasename} - the current opened file's basename
+    // ${fileBasenameNoExtension} - the current opened file's basename with no file extension
+    // ${fileDirname} - the current opened file's dirname
+    // ${fileExtname} - the current opened file's extension
+    // ${cwd} - the task runner's current working directory on startup
+    // ${lineNumber} - the current selected line number in the active file
+    // ${selectedText} - the current selected text in the active file
+
+    "version": "2.0.0",
+    "options": {
+        //"cwd": "${workspaceRoot}/${env:ProjDir}",                 // NG
+        "cwd": "${workspaceRoot}/Phoenix/Projects/Nt32/000",      // OK
+        //"cwd": "${env:cwd}",                                      // NG
+    },
+
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
+    },
+
+    // "windows": {
+    //     "options": {
+    //         "shell": {
+    //             "executable": "cmd.exe",
+    //             "args": [
+    //                 //"/d", "/c"
+    //                 "/k", "VSCD.bat 3"
+    //                 //"/k"
+    //                 //"VSCD.bat 3"
+    //                 //""C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\VsDevCmd.bat""
+    //             ]
+    //         }
+    //     }
+    // },
+
+    "tasks": [
+        {
+            "label": "Build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": ["Phmake"],
+            //"dependsOn": ["Phmake Build", "Edk Build"],
+        },
+        {
+            "label": "Phmake",
+            "type": "shell",
+            "command": "Phmake.bat",
+            //"command": "CD && SET",
+            //"command": "CD ${env:cwd} && CD && SET",
+            //"problemMatcher": [
+            //    "$go"
+            //]
+            "problemMatcher" : "$msCompile"
+        },
+
+        //{
+        //    "label": "Edk Build",
+        //    "type": "shell",
+        //    "command": "Phmake.bat",
+        //    //"command": "SET && CD",
+        //},
+
+        {
+            "label": "Phmake CleanAll",
+            "type": "shell",
+            "command": "Phmake.bat Cleanall",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Phmake ShortCut",
+            "type": "shell",
+            "command": "Phmake.bat ShortCut=${fileBasenameNoExtension}",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            }
+            // "problemMatcher": [
+            //     "$go"
+            // ]
+        },
+        {
+            "label": "Phmake QBA",
+            "type": "shell",
+            "command": "Phmake.bat qba",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+            // "problemMatcher": [
+            //     "$go"
+            // ]
+        },
+        {
+            "label": "Run tests",
+            "type": "shell",
+            "command": "dir",
+            "windows": {
+                 "command": "VSC.bat",
+                //"command": "CD ${workspaceFolder}/${SCT_PROJECT_PATH} && dir",
+            },
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+    ]
+}

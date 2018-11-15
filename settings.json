@@ -1,0 +1,21 @@
+{
+    "terminal.integrated.cwd": "${workspaceRoot}/Phoenix/Projects/Nt32/000",
+    "terminal.integrated.enableBell": true,
+    "terminal.integrated.env.windows": {
+        //"PATH": "C:/Python27;${env:PATH}",
+        "PYTHON_HOME":          "C:/Python27",
+        "PYTHON_FREEZER_PATH":  "C:/Python27/Scripts",
+        "CYGWIN_HOME":          "C:/cygwin64/bin",
+
+        "ProjDir":      "Phoenix/Projects/Nt32/000",
+        "BuildOutput":  "${workspaceFolder}/Build/NT32/NOOPT_VS2012x86/IA32",
+        "cwd":          "${workspaceRoot}/Phoenix/Projects/Nt32/000",
+    },
+    // "launch": {
+    //     //"configurations": [],
+    //     "configurations": [{
+    //         "cwd":      "${workspaceFolder}/Phoenix/Projects/Nt32/000",
+    //     }],
+    //     //"compounds": []
+    // },
+}

@@ -1,0 +1,36 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+u",
+        "command": "editor.action.transformToLowercase"
+    },
+    {
+        "key": "ctrl+shift+u",
+        "command": "editor.action.transformToUppercase"
+    },
+    {
+        "key": "ctrl+win+c",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Phmake CleanAll"       // tasks.label
+    },
+    {
+        "key": "ctrl+win+s",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Phmake ShortCut"       // tasks.label
+    },
+    {
+        "key": "ctrl+win+q",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Phmake QBA"             // tasks.label
+    },
+    {
+        "key": "ctrl+win+t",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Run tests"             // tasks.label
+    },
+    {
+        "key": "ctrl+win+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inProjectManagerList"
+    }
+]
