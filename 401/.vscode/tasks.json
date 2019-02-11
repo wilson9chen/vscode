@@ -1,0 +1,77 @@
+{
+    // See https://code.visualstudio.com/Docs/editor/tasks
+    // See also https://code.visualstudio.com/docs/editor/tasks-appendix
+    // for the documentation about the tasks.json format
+    //
+    // ${workspaceFolder} - the path of the folder opened in VS Code
+    // ${workspaceFolderBasename} - the name of the folder opened in VS Code without any slashes (/)
+    // ${file} - the current opened file
+    // ${relativeFile} - the current opened file relative to workspaceFolder
+    // ${fileBasename} - the current opened file's basename
+    // ${fileBasenameNoExtension} - the current opened file's basename with no file extension
+    // ${fileDirname} - the current opened file's dirname
+    // ${fileExtname} - the current opened file's extension
+    // ${cwd} - the task runner's current working directory on startup
+    // ${lineNumber} - the current selected line number in the active file
+    // ${selectedText} - the current selected text in the active file
+
+    "version": "2.0.0",
+    "options": {
+        "cwd": "Phoenix/Projects/ApolloLakeI/000",
+        "env": {
+            "PerRunBatch"           : "VSC.bat 4 3"     // ! DEF_BUILD_X64
+        }
+    },
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
+    },
+
+    "tasks": [
+        {
+            "label": "Build",
+            "group": { "kind": "build", "isDefault": true },
+            "dependsOn": ["Phmake"],
+            //"dependsOn": ["Phmake Build", "Edk Build"],
+        },
+        {
+            "label": "CleanAll",
+            "type": "shell",
+            "command": "%PerRunBatch% && Phmake.bat Cleanall",
+            "group": { "kind": "test",  "isDefault": true },
+        },
+        {
+            "label": "Phmake",
+            "type": "shell",
+            "command": "%PerRunBatch% && Phmake.bat",
+        },
+        {
+            "label": "Phmake ShortCut",
+            "type": "shell",
+            "command": "%PerRunBatch% && Phmake.bat ShortCut=${fileBasenameNoExtension}",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            // "problemMatcher": [
+            //     "$go"
+            // ]
+        },
+        {
+            "label": "Phmake QBA",
+            "type": "shell",
+            "command": "Phmake.bat qba",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            // "problemMatcher": [
+            //     "$go"
+            // ]
+        },
+    ]
+}

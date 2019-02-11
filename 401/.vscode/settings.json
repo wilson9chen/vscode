@@ -1,0 +1,10 @@
+{
+    "terminal.integrated.enableBell": true,
+    "terminal.integrated.env.windows": {
+        "PYTHON_HOME"           : "C:/Python27",
+        "PYTHON_FREEZER_PATH"   : "C:/Python27/Scripts",
+        "CYGWIN_HOME"           : "C:/cygwin64/bin",
+
+        //"PerRunBatch"           : "VSC.bat 5 3",
+    },
+}
