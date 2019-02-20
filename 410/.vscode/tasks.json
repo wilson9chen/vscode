@@ -52,10 +52,16 @@
             "command": "%PerRunBatch% && Phmake.bat",
         },
         {
+            "label": "Edk Build",
+            "type": "shell",
+            "command": "Phmake.bat",
+            //"command": "SET && CD",
+        },
+        {
             "label": "Phmake ShortCut",
             "type": "shell",
-            "command": "%PerRunBatch% && Phmake.bat ShortCut ShortCut=${fileBasename}",
-            //"command": "%PerRunBatch% && Phmake.bat ShortCut=${fileBasename}",
+            //"command": "%PerRunBatch% && Phmake.bat ShortCut=${fileBasenameNoExtension}",
+            "command": "%PerRunBatch% && Phmake.bat ShortCut=${fileBasename}",
             "group": { "kind": "test",  "isDefault": true },
         },
         {

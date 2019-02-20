@@ -17,13 +17,17 @@
 
     "version": "2.0.0",
     "options": {
-        "cwd": "Phoenix\\Projects\\Nt32\\000",
+        "cwd": "${workspaceRoot}",
         "env": {
-            "PerRunBatch"           : "VSC.bat 3 1",    // ! DEF_BUILD_IA32
-            //"PerRunBatch"           : "VSC.bat 3 2"     //   DEF_BUILD_X64
-            //"PerRunBatch"           : "VSCD.bat 6"      // VS2017
+            "PerRunBatch"       : "VSC.bat 5 1 && edksetup.bat",
+            "ActivePlatform"    : "-p Nt32Pkg/Nt32Pkg.dsc",
+            "TargetArch"        : "-a IA32",       //  IA32, IPF, X64, EBC, ARM or AArch64.
+            "Target"            : "-b NOOPT",      // DEBUG, RELEASE, NOOPT
+            "ToolChainTag"      : "-t VS2015x86",
         }
     },
+    "type": "shell",
+    "group": {"kind": "test", "isDefault": true },
     "presentation": {
         "echo": true,
         "reveal": "always",
@@ -37,32 +41,34 @@
         {
             "label": "Build",
             "group": { "kind": "build", "isDefault": true },
-            "dependsOn": ["Phmake"],
-            //"dependsOn": ["Phmake Build", "Edk Build"],
+            //"dependsOn": ["Phmake", "Edk Build"],
+            //"dependsOn": ["Phmake"],
+            "dependsOn": ["Edk Build"],
         },
         {
             "label": "CleanAll",
-            "type": "shell",
-            "command": "%PerRunBatch% && Phmake.bat Cleanall",
-            "group": { "kind": "test",  "isDefault": true },
+            "command": "%PerRunBatch% && build.exe %ActivePlatform% %TargetArch% %Target% %ToolChainTag%",
+            "args": [ "cleanall" ],
         },
         {
             "label": "Phmake",
-            "type": "shell",
             "command": "%PerRunBatch% && Phmake.bat",
         },
         {
+            "label": "Edk Build",
+            "command": "%PerRunBatch% && build.exe %ActivePlatform% %TargetArch% %Target% %ToolChainTag%",
+        },
+        {
             "label": "Phmake ShortCut",
-            "type": "shell",
-            "command": "%PerRunBatch% && Phmake.bat ShortCut ShortCut=${fileBasename}",
-            //"command": "%PerRunBatch% && Phmake.bat ShortCut=${fileBasename}",
-            "group": { "kind": "test",  "isDefault": true },
+            "command": "%PerRunBatch% && build.exe %ActivePlatform% %TargetArch% %Target% %ToolChainTag% -m ${file}",
         },
         {
             "label": "Phmake QBA",
-            "type": "shell",
             "command": "%PerRunBatch% && Phmake.bat qba",
-            "group": { "kind": "test",  "isDefault": true },
+        },
+        {
+            "label": "Build Tools",
+            "command": "%PerRunBatch% ForceRebuild",
         },
         // {
         //     "label": "Run tests",
