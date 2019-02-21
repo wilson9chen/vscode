@@ -18,12 +18,21 @@
     "version": "2.0.0",
     "options": {
         "cwd": "Phoenix\\Projects\\Nt32\\000",
+        "shell": {
+            "executable": "VSC.bat", "args": ["5", "1"]
+        },
         "env": {
-            "PerRunBatch"           : "VSC.bat 3 1",    // ! DEF_BUILD_IA32
-            //"PerRunBatch"           : "VSC.bat 3 2"     //   DEF_BUILD_X64
-            //"PerRunBatch"           : "VSCD.bat 6"      // VS2017
-        }
+            "PerRunBatch"           : "VSC.bat 3 1",
+            //"PerRunBatch"         : "VSCD.bat 5",
+            // "TargetArch"        : "IA32",       //  IA32, IPF, X64, EBC, ARM or AArch64.
+            // "Target"            : "NOOPT",      // DEBUG, RELEASE, NOOPT
+            // "ToolChainTag"      : "VS2015x86",
+            //"BuildOptions"      : "-a %TargetArch% -b %Target% -t %ToolChainTag% -p %ActivePlatform%",
+            //"BuildOptions"      : "  -a IA32  -b NOOPT  -t VS2015x86",
+        },
     },
+    "type": "shell",
+    "group": { "kind": "test",  "isDefault": true },
     "presentation": {
         "echo": true,
         "reveal": "always",
@@ -32,43 +41,38 @@
         "showReuseMessage": true,
         "clear": true
     },
-
     "tasks": [
+        //{
+        //    "label": "Build",
+        //    "group": { "kind": "build", "isDefault": true },
+        //    "dependsOn": ["Phmake"],
+        //    //"dependsOn": ["Phmake Build", "Edk Build"],
+        //},
         {
-            "label": "Build",
+            "label": "Phmake Build",
             "group": { "kind": "build", "isDefault": true },
-            "dependsOn": ["Phmake"],
-            //"dependsOn": ["Phmake Build", "Edk Build"],
-        },
-        {
-            "label": "CleanAll",
-            "type": "shell",
-            "command": "%PerRunBatch% && Phmake.bat Cleanall",
-            "group": { "kind": "test",  "isDefault": true },
-        },
-        {
-            "label": "Phmake",
-            "type": "shell",
             "command": "%PerRunBatch% && Phmake.bat",
+            //"command": "Phmake.bat",
         },
         {
             "label": "Edk Build",
-            "type": "shell",
-            "command": "Phmake.bat",
-            //"command": "SET && CD",
+            "command": "%PerRunBatch% && build.exe",
+        },
+        {
+            "label": "CleanAll",
+            "command": "%PerRunBatch% && Phmake.bat Cleanall"
         },
         {
             "label": "Phmake ShortCut",
-            "type": "shell",
-            //"command": "%PerRunBatch% && Phmake.bat ShortCut=${fileBasenameNoExtension}",
-            "command": "%PerRunBatch% && Phmake.bat ShortCut=${fileBasename}",
-            "group": { "kind": "test",  "isDefault": true },
+            "command": "%PerRunBatch% && Phmake.bat =${fileBasename}",
         },
         {
             "label": "Phmake QBA",
-            "type": "shell",
             "command": "%PerRunBatch% && Phmake.bat qba",
-            "group": { "kind": "test",  "isDefault": true },
+        },
+        {
+            "label": "Build Tools",
+            "command": "Phmake.bat",
         },
         // {
         //     "label": "Run tests",

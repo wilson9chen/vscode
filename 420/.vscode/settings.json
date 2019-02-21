@@ -1,5 +1,7 @@
 {
     "terminal.integrated.enableBell": true,
+    "terminal.integrated.cwd": "Phoenix\\Projects\\Nt32\\000",
+    //
     "terminal.integrated.env.windows": {
         "TEMP"                  : "T:\\Temp",
         "TMP"                   : "T:\\Temp",

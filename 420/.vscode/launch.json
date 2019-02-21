@@ -12,7 +12,8 @@
             "externalConsole": true,
             "stopAtEntry": false,
             "environment": [],
-            "cwd": "${workspaceRoot}/Build/NT32/DEBUG_VS2012x86/IA32",
+            //"cwd": "${workspaceRoot}/Build/NT32/DEBUG_VS2012x86/IA32",
+            "cwd"   : "P:\\BUILD_ROOT_NT32\\NOOPT_VS2015x86\\IA32",
             "program":  "SecMain.exe",
             "args": [],
         }
